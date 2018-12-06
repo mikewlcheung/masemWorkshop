@@ -774,7 +774,7 @@ head(my.R2)</code></pre>
 <li>If the labels are the same, these parameters are constrained to be equal.</li>
 </ul></li>
 <li><strong>Important</strong>: The columns and rows represent the independent and dependent variables in the A matrix!</li>
-<li>Most users find it easier to specify the models in <code>lavaan</code> syntax.</li>
+<li>Most users find it easier to specify the models in <a href="http://lavaan.ugent.be/tutorial/syntax1.html">lavaan syntax</a>.</li>
 </ul>
 <pre class="r"><code>## Regression model
 model &lt;- &quot;SAT_Math ~ Spatial + SAT_Verbal
@@ -877,19 +877,19 @@ summary(random1)</code></pre>
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##               Estimate   Std.Error      lbound      ubound z value  Pr(&gt;|z|)    
-## Intercept1  0.37774910  0.03950302  0.30032460  0.45517360  9.5625 &lt; 2.2e-16 ***
-## Intercept2  0.38078431  0.07849561  0.22693574  0.53463288  4.8510 1.228e-06 ***
-## Intercept3  0.17049275  0.05135451  0.06983976  0.27114574  3.3199 0.0009004 ***
-## Tau2_1_1    0.00050381  0.00420091 -0.00772983  0.00873744  0.1199 0.9045405    
-## Tau2_2_2    0.04162641  0.02573876 -0.00882062  0.09207345  1.6173 0.1058209    
-## Tau2_3_3    0.00675396  0.01027917 -0.01339284  0.02690077  0.6571 0.5111467    
+##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)    
+## Intercept1  0.3777491  0.0395030  0.3003246  0.4551736  9.5625 &lt; 2.2e-16 ***
+## Intercept2  0.3807843  0.0784956  0.2269358  0.5346329  4.8510 1.228e-06 ***
+## Intercept3  0.1704928  0.0513545  0.0698398  0.2711458  3.3199 0.0009004 ***
+## Tau2_1_1    0.0005038  0.0042009 -0.0077298  0.0087374  0.1199 0.9045407    
+## Tau2_2_2    0.0416264  0.0257388 -0.0088206  0.0920734  1.6173 0.1058209    
+## Tau2_3_3    0.0067540  0.0102792 -0.0133928  0.0269008  0.6571 0.5111466    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 61.02637
+## Q statistic on the homogeneity of effect sizes: 61.02636
 ## Degrees of freedom of the Q statistic: 27
-## P value of the Q statistic: 0.0001932109
+## P value of the Q statistic: 0.0001932117
 ## 
 ## Heterogeneity indices (based on the estimated Tau2):
 ##                              Estimate
@@ -907,14 +907,14 @@ summary(random1)</code></pre>
 <pre class="r"><code>## Extract the fixed-effects estimates
 (est_fixed &lt;- coef(random1, select=&quot;fixed&quot;))</code></pre>
 <pre><code>## Intercept1 Intercept2 Intercept3 
-##  0.3777491  0.3807843  0.1704927</code></pre>
+##  0.3777491  0.3807843  0.1704928</code></pre>
 <pre class="r"><code>## Convert the estimated vector to a symmetrical matrix
 ## where the diagonals are fixed at 1 (for a correlation matrix)
 vec2symMat(est_fixed, diag=FALSE)</code></pre>
 <pre><code>##           [,1]      [,2]      [,3]
 ## [1,] 1.0000000 0.3777491 0.3807843
-## [2,] 0.3777491 1.0000000 0.1704927
-## [3,] 0.3807843 0.1704927 1.0000000</code></pre>
+## [2,] 0.3777491 1.0000000 0.1704928
+## [3,] 0.3807843 0.1704928 1.0000000</code></pre>
 </div>
 <div id="random-effects-tssem-stage-2-analysis-1" class="section level1">
 <h1>Random-effects TSSEM: Stage 2 Analysis</h1>
@@ -965,8 +965,8 @@ summary(random2)</code></pre>
 mxEval(Smatrix, random2$mx.fit)</code></pre>
 <pre><code>##           [,1]      [,2]      [,3]
 ## [1,] 0.7542121 0.0000000 0.0000000
-## [2,] 0.0000000 1.0000000 0.1704927
-## [3,] 0.0000000 0.1704927 1.0000000</code></pre>
+## [2,] 0.0000000 1.0000000 0.1704928
+## [3,] 0.0000000 0.1704928 1.0000000</code></pre>
 <pre class="r"><code>## R2
 mxEval(1-Smatrix, random2$mx.fit)[1,1]</code></pre>
 <pre><code>## [1] 0.2457879</code></pre>
@@ -984,7 +984,7 @@ mxEval(1-Smatrix, random2$mx.fit)[1,1]</code></pre>
 <ul>
 <li>MASEM provides a useful framework to synthesizing and testing models in SEM.</li>
 <li>The TSSEM approach provides a statistically sound approach in doing MASEM.</li>
-<li>A new MASEM approach that handles continuous moderators is being developed. The examples are available at <a href="https://github.com/mikewlcheung/code-in-articles/tree/master/Jak%20and%20Cheung%202018">the Github</a>.</li>
+<li>A new MASEM approach that handles continuous moderators is being developed. The paper and examples are available at <a href="https://psyarxiv.com/ce85j/">PsyArXiv</a> and <a href="https://github.com/mikewlcheung/code-in-articles">Github</a>.</li>
 <li>Another area of my interest is the <a href="https://courses.nus.edu.sg/course/psycwlm/internet/MASEMworkshop/slides1.html#(1)">SEM-based meta-analysis</a>.</li>
 <li>Q&amp;A!</li>
 </ul>

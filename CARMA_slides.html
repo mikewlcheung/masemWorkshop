@@ -702,7 +702,7 @@ my.R2 &lt;-<span class="st"> </span><span class="kw">lapply</span>( my.R2, <span
 <li>If the labels are the same, these parameters are constrained to be equal.</li>
 </ul></li>
 <li><strong>Important</strong>: The columns and rows represent the independent and dependent variables in the A matrix!</li>
-<li>Most users find it easier to specify the models in <code>lavaan</code> syntax.</li>
+<li>Most users find it easier to specify the models in <a href="http://lavaan.ugent.be/tutorial/syntax1.html">lavaan syntax</a>.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Regression model
 model &lt;-<span class="st"> &quot;SAT_Math ~ Spatial + SAT_Verbal</span>
@@ -805,19 +805,19 @@ random1 &lt;-<span class="st"> </span><span class="kw">tssem1</span>(Becker94<sp
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##               Estimate   Std.Error      lbound      ubound z value  Pr(&gt;|z|)    
-## Intercept1  0.37774910  0.03950302  0.30032460  0.45517360  9.5625 &lt; 2.2e-16 ***
-## Intercept2  0.38078431  0.07849561  0.22693574  0.53463288  4.8510 1.228e-06 ***
-## Intercept3  0.17049275  0.05135451  0.06983976  0.27114574  3.3199 0.0009004 ***
-## Tau2_1_1    0.00050381  0.00420091 -0.00772983  0.00873744  0.1199 0.9045405    
-## Tau2_2_2    0.04162641  0.02573876 -0.00882062  0.09207345  1.6173 0.1058209    
-## Tau2_3_3    0.00675396  0.01027917 -0.01339284  0.02690077  0.6571 0.5111467    
+##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)    
+## Intercept1  0.3777491  0.0395030  0.3003246  0.4551736  9.5625 &lt; 2.2e-16 ***
+## Intercept2  0.3807843  0.0784956  0.2269358  0.5346329  4.8510 1.228e-06 ***
+## Intercept3  0.1704928  0.0513545  0.0698398  0.2711458  3.3199 0.0009004 ***
+## Tau2_1_1    0.0005038  0.0042009 -0.0077298  0.0087374  0.1199 0.9045407    
+## Tau2_2_2    0.0416264  0.0257388 -0.0088206  0.0920734  1.6173 0.1058209    
+## Tau2_3_3    0.0067540  0.0102792 -0.0133928  0.0269008  0.6571 0.5111466    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 61.02637
+## Q statistic on the homogeneity of effect sizes: 61.02636
 ## Degrees of freedom of the Q statistic: 27
-## P value of the Q statistic: 0.0001932109
+## P value of the Q statistic: 0.0001932117
 ## 
 ## Heterogeneity indices (based on the estimated Tau2):
 ##                              Estimate
@@ -835,14 +835,14 @@ random1 &lt;-<span class="st"> </span><span class="kw">tssem1</span>(Becker94<sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Extract the fixed-effects estimates
 (est_fixed &lt;-<span class="st"> </span><span class="kw">coef</span>(random1, <span class="dt">select=</span><span class="st">&quot;fixed&quot;</span>))</code></pre></div>
 <pre><code>## Intercept1 Intercept2 Intercept3 
-##  0.3777491  0.3807843  0.1704927</code></pre>
+##  0.3777491  0.3807843  0.1704928</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Convert the estimated vector to a symmetrical matrix
 ## where the diagonals are fixed at 1 (for a correlation matrix)
 <span class="kw">vec2symMat</span>(est_fixed, <span class="dt">diag=</span><span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>##           [,1]      [,2]      [,3]
 ## [1,] 1.0000000 0.3777491 0.3807843
-## [2,] 0.3777491 1.0000000 0.1704927
-## [3,] 0.3807843 0.1704927 1.0000000</code></pre>
+## [2,] 0.3777491 1.0000000 0.1704928
+## [3,] 0.3807843 0.1704928 1.0000000</code></pre>
 </div>
 <div id="random-effects-tssem-stage-2-analysis-1" class="slide section level1">
 <h1>Random-effects TSSEM: Stage 2 Analysis</h1>
@@ -893,8 +893,8 @@ random1 &lt;-<span class="st"> </span><span class="kw">tssem1</span>(Becker94<sp
 <span class="kw">mxEval</span>(Smatrix, random2<span class="op">$</span>mx.fit)</code></pre></div>
 <pre><code>##           [,1]      [,2]      [,3]
 ## [1,] 0.7542121 0.0000000 0.0000000
-## [2,] 0.0000000 1.0000000 0.1704927
-## [3,] 0.0000000 0.1704927 1.0000000</code></pre>
+## [2,] 0.0000000 1.0000000 0.1704928
+## [3,] 0.0000000 0.1704928 1.0000000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## R2
 <span class="kw">mxEval</span>(<span class="dv">1</span><span class="op">-</span>Smatrix, random2<span class="op">$</span>mx.fit)[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre></div>
 <pre><code>## [1] 0.2457879</code></pre>
@@ -912,7 +912,7 @@ random1 &lt;-<span class="st"> </span><span class="kw">tssem1</span>(Becker94<sp
 <ul>
 <li>MASEM provides a useful framework to synthesizing and testing models in SEM.</li>
 <li>The TSSEM approach provides a statistically sound approach in doing MASEM.</li>
-<li>A new MASEM approach that handles continuous moderators is being developed. The examples are available at <a href="https://github.com/mikewlcheung/code-in-articles/tree/master/Jak%20and%20Cheung%202018">the Github</a>.</li>
+<li>A new MASEM approach that handles continuous moderators is being developed. The paper and examples are available at <a href="https://psyarxiv.com/ce85j/">PsyArXiv</a> and <a href="https://github.com/mikewlcheung/code-in-articles">Github</a>.</li>
 <li>Another area of my interest is the <a href="https://courses.nus.edu.sg/course/psycwlm/internet/MASEMworkshop/slides1.html#(1)">SEM-based meta-analysis</a>.</li>
 <li>Q&amp;A!</li>
 </ul>
