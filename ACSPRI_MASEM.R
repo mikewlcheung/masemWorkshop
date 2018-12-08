@@ -8,6 +8,9 @@ for (i in lib2install) {
 }
 
 ## ------------------------------------------------------------------------
+## Load the library for MASEM
+library(metaSEM)
+
 ## Load the library to read XLSX file
 library(readxl)
 
